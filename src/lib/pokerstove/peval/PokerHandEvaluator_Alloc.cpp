@@ -3,6 +3,7 @@
  * $Id: PokerHandEvaluator_Alloc.cpp 2649 2012-06-30 04:53:24Z prock $
  */
 #include <stdexcept>
+#include "HoldemHandEvaluatorOnlyFlop.h"
 #include "HoldemHandEvaluator.h"
 #include "StudHandEvaluator.h"
 #include "RazzHandEvaluator.h"
@@ -26,6 +27,12 @@ boost::shared_ptr<PokerHandEvaluator> PokerHandEvaluator::alloc (const string & 
   boost::shared_ptr<PokerHandEvaluator> ret;
   switch (strid[0])
     {
+    case 'f':		//     hold'em
+    case 'F':		//     hold'em
+      //ret = new UniversalHandEvaluator (2,2,3,5,0,&CardSet::evaluateHigh, NULL);
+      ret.reset (new HoldemHandEvaluatorOnlyFlop);
+      break;
+
     case 'h':		//     hold'em
     case 'H':		//     hold'em
       //ret = new UniversalHandEvaluator (2,2,3,5,0,&CardSet::evaluateHigh, NULL);

@@ -68,6 +68,7 @@ public:
      *
      * supported games:
      * - 'h'    hold'em (or high if no board)
+     * - 'f'    hold'em only flop deal
      * - 'k'    Kansas City lowball (2-7)
      * - 'l'    lowball (A-5)
      * - '3'    three card poker
