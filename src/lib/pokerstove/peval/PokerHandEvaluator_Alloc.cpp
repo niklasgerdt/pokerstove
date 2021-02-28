@@ -4,6 +4,7 @@
  */
 #include <stdexcept>
 #include "HoldemHandEvaluatorOnlyFlop.h"
+#include "OmahaHighHandEvaluatorOnlyFlop.h"
 #include "HoldemHandEvaluator.h"
 #include "StudHandEvaluator.h"
 #include "RazzHandEvaluator.h"
@@ -27,10 +28,12 @@ boost::shared_ptr<PokerHandEvaluator> PokerHandEvaluator::alloc (const string & 
   boost::shared_ptr<PokerHandEvaluator> ret;
   switch (strid[0])
     {
-    case 'f':		//     hold'em
-    case 'F':		//     hold'em
-      //ret = new UniversalHandEvaluator (2,2,3,5,0,&CardSet::evaluateHigh, NULL);
-      ret.reset (new HoldemHandEvaluatorOnlyFlop);
+    case 'f':		//     hold'em only flop
+       ret.reset (new HoldemHandEvaluatorOnlyFlop);
+       break;
+
+    case 'F':		//     Omaha High Only Flop
+      ret.reset (new OmahaHighHandEvaluatorOnlyFlop);
       break;
 
     case 'h':		//     hold'em
